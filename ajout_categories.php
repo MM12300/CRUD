@@ -38,7 +38,7 @@ if(isset($_POST) && !empty($_POST)){
         //Ici on peut :
         // - Rediriger l'utilisateur
         // - Récupérer et afficher l'id de l'enregistrement ajouté
-        // - 
+        // - Autre en fonction du site
 
         }else{
         echo "Attention il faut entrer un nom de catégorie";

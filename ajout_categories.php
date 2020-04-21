@@ -27,7 +27,7 @@ if(isset($_POST) && !empty($_POST)){
         $query= $db->prepare($sql);
 
         //On injecte les valeurs dans la requête
-        $query->bindvalue(':nom', $nom, PDO::PARAM_STR);
+        $query->bindValue(':nom', $nom, PDO::PARAM_STR);
 
         //On éxécute la requête
         $query->execute();

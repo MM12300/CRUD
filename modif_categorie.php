@@ -28,28 +28,40 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     //On récupère les données
     $categorie = $query->fetch(PDO::FETCH_ASSOC);
 
-    //On se déconnecte
-    require_once('close.php');
-
     //Si la catégorie n'existe pas
     if(!$categorie){
         echo 'La catégorie n\'existe pas';
         die;
     }
 
+    //On vérifie le formulaire $_POST
+    //On vérifier si name existe et n'est pas nul
+if(isset($_POST['nom_modif']) && !empty($_POST['nom_modif'])){
+        //On doit modifier l'engistrement de la base
+        //On récupère le nom saisi et on le nettoie
+        $nom = strip_tags($POST['nom_modif']);
 
+        //Requête SQL
+        $sql = 'UPDATE `categories` SET `name` = :name WHERE `id`=:id;';
 
+        //On prépare la requête
+        $query = $db->prepare($SQL);
+        
+        //On injecte les valeurs
+        $query->bindValue(':name', $nom, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
 
-    
+        //On éxécute la requête
+        $query->execute();
+
+        //On redirige vers une autre page (liste des catégories par exemple)  
+        header('location: categories.php');
+}
+    //On se déconnecte
+    require_once('close.php');  
            }else{
         echo "Message d'erreur";
     }
-
-
-
-$nomchange = ;
-//Requête SQL
-$sql= UPDATE `categories` SET `name`=":nom_modif" WHERE id=""
 
 ?>
 

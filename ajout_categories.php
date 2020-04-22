@@ -3,7 +3,7 @@
 
 //Vérifier si $_POST existe, si le traitement du form marche
 if(isset($_POST) && !empty($_POST)){
-    //On vérifie si tous les champs du formulaire sans remplis
+    //On vérifie si tous les champs du formulaire sont remplis
     //on aurait pu utiliser la fonction verifForm mais il n'y a qu'un champ du formulaire à vérifier
     if(isset($_POST['nom']) && !empty($_POST['nom'])){
         //On récupère la valeur saisie dans input, non protégée

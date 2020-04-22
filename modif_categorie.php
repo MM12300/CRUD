@@ -8,7 +8,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     //vérifier si on a un id et si il n'est pas vide
 
     //On récupère l'id et on nettoie
-    $id = strip_tags($GET['id']);
+    $id = strip_tags($_GET['id']);
 
     //On se connecte à la base pour obtenir la categorie
     require_once('connect.php');
@@ -17,7 +17,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $sql = 'SELECT * FROM `categories` WHERE `id` = :id;';
 
     //On a une variable donc on utilise une requête préparée
-    $query = $db->prepare($SQL);
+    $query = $db->prepare($sql);
 
     //On injecte les valeurs
     $query->bindValue(':id', $id, PDO::PARAM_INT);
@@ -39,13 +39,13 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 if(isset($_POST['nom_modif']) && !empty($_POST['nom_modif'])){
         //On doit modifier l'engistrement de la base
         //On récupère le nom saisi et on le nettoie
-        $nom = strip_tags($POST['nom_modif']);
+        $nom = strip_tags($_POST['nom_modif']);
 
         //Requête SQL
         $sql = 'UPDATE `categories` SET `name` = :name WHERE `id`=:id;';
 
         //On prépare la requête
-        $query = $db->prepare($SQL);
+        $query = $db->prepare($sql);
         
         //On injecte les valeurs
         $query->bindValue(':name', $nom, PDO::PARAM_STR);
@@ -79,7 +79,7 @@ if(isset($_POST['nom_modif']) && !empty($_POST['nom_modif'])){
     <form method="post">
         <div>
             <label for="nom">Nom de la catégorie</label>
-            <input type="text" id="nom" name="nom_modif" value="<?= $categories['name']?>">
+            <input type="text" id="nom" name="nom_modif" value="<?= $categorie['name']?>">
         </div>
         <button>Modifier la catégorie</button>
     </form>

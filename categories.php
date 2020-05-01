@@ -1,5 +1,5 @@
 <?php
-// Cette page récupère la liste de tous les articles de la base de données
+// Cette page récupère la liste de toutes les catégories de la base de données
 
 // On se connecte à la base
 require_once('connect.php');
